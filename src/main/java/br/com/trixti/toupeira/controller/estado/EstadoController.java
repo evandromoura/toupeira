@@ -15,11 +15,15 @@ public class EstadoController implements Serializable{
 
 	private EstadoTO estadoTO;
 	
+	
 	public void gravar() {
-		System.out.println("testando se chegou");
+		System.out.println("testando se chegou"+getEstadoTO().getEstado().getNome());
 	}
 
 	public EstadoTO getEstadoTO() {
+		if (estadoTO == null) {
+			estadoTO = new EstadoTO();
+		}
 		return estadoTO;
 	}
 

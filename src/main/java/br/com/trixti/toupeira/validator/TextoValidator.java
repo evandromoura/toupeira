@@ -15,7 +15,7 @@ public class TextoValidator implements Validator {
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 		String valor = (String) value;
-		String regexSomenteLetras = "^[a-zA-Z]+$";
+		String regexSomenteLetras = "^[a-zA-Z ]+$";
         if (!valor.matches(regexSomenteLetras)) {
 			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Texto Invalido"));
         }

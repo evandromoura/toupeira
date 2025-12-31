@@ -23,7 +23,7 @@
 	    <br />
 	    
 	    ENDERECO
-	    <h:inputText id="id-endereco"  value="#{pessoaController.pessoaTO.pessoa.endereco}" label="Idade" required="true" />
+	    <h:inputText id="id-endereco"  value="#{pessoaController.pessoaTO.pessoa.endereco}" label="Endereco" required="true" />
 	    
 	    <br />
 	    TELEFONE
@@ -37,10 +37,51 @@
 	     <h:commandLink action="#{pessoaController.gravar()}"  value="GRAVAR"  />
 	    
 	     <br />
-    
+    	 <br />
+    	 <br />
+    	<ui:fragment rendered="#{not empty pessoaController.pessoaTO.pessoas}">
+	    	<h:dataTable value="#{pessoaController.pessoaTO.pessoas}" var="pessoa">
+	    		<h:column>
+	    			<f:facet name="header">
+	    				Nome
+	    			</f:facet>
+	    			#{pessoa.nome}
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">
+	    				Idade
+	    			</f:facet>
+	    			#{pessoa.idade}
+	    		</h:column>
+	    		
+	    		<h:column>
+	    			<f:facet name="header">
+	    				Telefone
+	    			</f:facet>
+	    			#{pessoa.telefone}
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">
+	    				Endereco
+	    			</f:facet>
+	    			#{pessoa.endereco}
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">
+	    				Acoes
+	    			</f:facet>
+	    			<h:commandLink action="#{pessoaController.excluir(pessoa)}" immediate="true">
+	    				Excluir
+	    			</h:commandLink>
+	    			
+	    		</h:column>
+	    		
+	    	</h:dataTable>
+    	</ui:fragment>
     
     </h:form>
     
+   
 </h:body>
 
 
