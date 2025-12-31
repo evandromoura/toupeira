@@ -17,19 +17,51 @@
 	
 	<h:form>
 
-		ESTADO (nome)
-	    <h:inputText value="#{estadoController.estadoTO.estado.nome}" />
-	    
-	    
+		NOME
+	    <tou:texto value="#{estadoController.estadoTO.estado.nome}" />
 	    
 	    <br />
 	    
+	    UF
+	    <h:inputText  value="#{estadoController.estadoTO.estado.uf}" label="UF" required="true" />
+	    
+	    <br />
+	     
 	     <br />
-	    <h:commandLink action="#{estadoController.gravar()}"  value="GRAVAR"  />
-    
+	     <h:commandLink action="#{estadoController.gravar()}"  value="GRAVAR"  />
+	    
+	     <br />
+    	 <br />
+    	 <br />
+    	<ui:fragment rendered="#{not empty estadoController.estadoTO.estados}">
+	    	<h:dataTable value="#{estadoController.estadoTO.estados}" var="estado">
+	    		<h:column>
+	    			<f:facet name="header">
+	    				Nome
+	    			</f:facet>
+	    			#{estado.nome}
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">
+	    				UF
+	    			</f:facet>
+	    			#{estado.uf}
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">
+	    				Acoes
+	    			</f:facet>
+	    			<h:commandLink action="#{estadoController.excluir(estado)}" immediate="true">
+	    				Excluir
+	    			</h:commandLink>
+	    			
+	    		</h:column>
+	    		
+	    	</h:dataTable>
+    	</ui:fragment>
     
     </h:form>
-    
+	   
 </h:body>
 
 
