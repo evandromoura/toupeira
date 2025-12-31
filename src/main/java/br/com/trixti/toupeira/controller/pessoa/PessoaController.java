@@ -11,7 +11,6 @@ import br.com.trixti.toupeira.entity.Pessoa;
 import br.com.trixti.toupeira.service.pessoa.PessoaService;
 import br.com.trixti.toupeira.to.PessoaTO;
 
-
 @Named
 @ViewScoped
 public class PessoaController implements Serializable {
@@ -20,32 +19,30 @@ public class PessoaController implements Serializable {
 
 	private PessoaTO pessoaTO;
 	private @Inject PessoaService pessoaService;
-	
+
 	@PostConstruct
 	private void init() {
 		inicializar();
 	}
-	
+
 	private void inicializar() {
 		getPessoaTO().setPessoas(pessoaService.list());
 	}
-	
+
 	public void gravar() {
 		System.out.println(getPessoaTO().getPessoa().getNome());
 		System.out.println(getPessoaTO().getPessoa().getEndereco());
 		System.out.println(getPessoaTO().getPessoa().getIdade());
 		System.out.println(getPessoaTO().getPessoa().getTelefone());
-		
+
 		pessoaService.incluir(getPessoaTO().getPessoa());
 		getPessoaTO().setPessoa(null);
 	}
-	
-	
+
 	public void excluir(Pessoa pessoa) {
 		pessoaService.excluir(pessoa);
 		inicializar();
 	}
-	
 
 	public PessoaTO getPessoaTO() {
 		if (pessoaTO == null) {
@@ -58,4 +55,4 @@ public class PessoaController implements Serializable {
 		this.pessoaTO = pessoaTO;
 	}
 
-	}
+}

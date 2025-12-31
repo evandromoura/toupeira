@@ -11,9 +11,8 @@ import br.com.trixti.toupeira.entity.Pessoa;
 @Stateless
 public class PessoaDAO {
 
-	
 	private @Inject BD bd;
-	
+
 	public void incluir(Pessoa pessoa) {
 		bd.incluirPessoa(pessoa);
 	}

@@ -12,12 +12,12 @@ import br.com.trixti.toupeira.entity.Pessoa;
 public class PessoaService {
 
 	private @Inject PessoaDAO pessoaDAO;
-	
+
 	public void incluir(Pessoa pessoa) {
 		pessoaDAO.incluir(pessoa);
 	}
-	
-	public List<Pessoa> list(){
+
+	public List<Pessoa> list() {
 		return pessoaDAO.list();
 	}
 
@@ -25,5 +25,5 @@ public class PessoaService {
 
 		pessoaDAO.excluir(pessoa);
 	}
-	
+
 }
