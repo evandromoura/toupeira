@@ -22,6 +22,7 @@ public class PessoaController implements Serializable {
 
 	@PostConstruct
 	private void init() {
+		System.out.println("Ëra para entrar aqui");
 		inicializar();
 	}
 

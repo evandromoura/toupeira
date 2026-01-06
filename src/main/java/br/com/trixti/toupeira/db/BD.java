@@ -8,6 +8,7 @@ import javax.ejb.Singleton;
 import br.com.trixti.toupeira.entity.Cidade;
 import br.com.trixti.toupeira.entity.Estado;
 import br.com.trixti.toupeira.entity.Pessoa;
+import br.com.trixti.toupeira.entity.Usuario;
 
 @Singleton
 public class BD {
@@ -15,6 +16,16 @@ public class BD {
 	private List<Pessoa> pessoas;
 	private List<Estado> estados;
 	private List<Cidade> cidades;
+	private List<Usuario> usuarios;
+	
+	
+	public void incluirUsuario(Usuario usuario) {
+		getUsuarios().add(usuario);
+	}
+	
+	public void excluirUsuario(Usuario usuario) {
+		getUsuarios().remove(usuario);
+	}
 	
 	public void incluirPessoa(Pessoa pessoa) {
 		getPessoas().add(pessoa);
@@ -40,6 +51,19 @@ public class BD {
 		getEstados().remove(estado);
 	}
 	
+	
+	public List<Usuario> getUsuarios() {
+		if (usuarios == null) {
+			usuarios = new ArrayList<Usuario>();
+			
+		}
+		
+		return usuarios;
+	}
+	
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 	
 	public List<Pessoa> getPessoas() {
 		if (pessoas == null) {

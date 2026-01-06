@@ -1,0 +1,79 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:tou="http://java.sun.com/jsf/composite/components">
+
+
+
+<h:head>
+  <title>USUARIO</title>
+</h:head>
+
+
+<h:body>
+
+	<h:messages showDetail="true" showSummary="true" />
+	
+	<h:form>
+
+		NOME
+	    <tou:texto value="#{usuarioController.usuarioTO.usuario.nomeUsuario}" />
+	    
+	    <br />
+	    
+	    SENHA
+	    <h:inputText id="id-endereco"  value="#{usuarioController.usuarioTO.usuario.senhaUsuario}" label="senha" required="true" />
+	    
+	    <br />
+	    CIDADE
+	    <h:inputText value="#{usuarioController.usuarioTO.usuario.cidade}" label="cidade"  />
+	 
+	     <br />
+	     <h:commandLink action="#{usuarioController.gravar()}"  value="GRAVAR"  />
+	    
+	     <br />
+    	 <br />
+    	 <br />
+    	<ui:fragment rendered="#{not empty usuarioController.usuarioTO.usuarios}">
+	    	<h:dataTable value="#{usuarioController.usuarioTO.usuarios}" var="usuario">
+	    		<h:column>
+	    			<f:facet name="header">
+	    				Nome
+	    			</f:facet>
+	    			#{usuario.nomeUsuario}
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">
+	    				Cidade
+	    			</f:facet>
+	    			#{usuario.cidade.nome}
+	    		</h:column>
+	    		
+	    		<h:column>
+	    			<f:facet name="header">
+	    				Senha Usuario
+	    			</f:facet>
+	    			#{usuario.senhaUsuario}
+	    		</h:column>
+	    		
+	    		<h:column>
+	    			<f:facet name="header">
+	    				Acoes
+	    			</f:facet>
+	    			<h:commandLink action="#{usuarioController.excluir()}" immediate="true">
+	    				Excluir
+	    			</h:commandLink>
+	    			
+	    		</h:column>
+	    		
+	    	</h:dataTable>
+    	</ui:fragment>
+    
+    </h:form>
+    
+   
+</h:body>
+
+
+</html>
