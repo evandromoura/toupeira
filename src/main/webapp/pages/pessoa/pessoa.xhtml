@@ -32,11 +32,24 @@
 	    <br />
 	    IDADE
 	    <tou:numero value="#{pessoaController.pessoaTO.pessoa.idade}" />
-	    
+	     <br />
+	     CIDADE
+	     <br />
+	     <h:selectOneMenu  value="#{pessoaController.pessoaTO.pessoa.cidade.nome}" required="true" label="Cidade">
+	     	<f:selectItem itemLabel="Selecione..." />
+	     	<f:selectItems value="#{combosBean.cidades}" var="cidade" itemLabel="#{cidade.nome}/#{cidade.uf}" itemValue="#{cidade.nome}" />
+	     </h:selectOneMenu>
+	      <br />
+	      ESTADO
+	      <br />
+	     <h:selectOneMenu value= "#{pessoaController.pessoaTO.pessoa.estado.nome}" required= "true" label = "Estado">
+	     	<f:selectItem itemLabel = "Escolha"/>
+	     	<f:selectItems value="#{combosBean.estados}" var="estado" itemLabel="#{estado.nome}" itemValue= "#{estado.nome}"/>
+	     </h:selectOneMenu>
+	     
 	     <br />
 	     <h:commandLink action="#{pessoaController.gravar()}"  value="GRAVAR"  />
-	    
-	     <br />
+    	 <br />
     	 <br />
     	 <br />
     	<ui:fragment rendered="#{not empty pessoaController.pessoaTO.pessoas}">
@@ -65,6 +78,18 @@
 	    				Endereco
 	    			</f:facet>
 	    			#{pessoa.endereco}
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">
+	    				Cidade
+	    			</f:facet>
+	    			#{pessoa.cidade.nome}
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">
+	    				Estado
+	    			</f:facet>
+	    			#{pessoa.estado.nome}
 	    		</h:column>
 	    		<h:column>
 	    			<f:facet name="header">

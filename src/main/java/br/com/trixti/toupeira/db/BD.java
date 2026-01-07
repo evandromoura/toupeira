@@ -51,13 +51,18 @@ public class BD {
 		getEstados().remove(estado);
 	}
 	
+	public Cidade recuperarPorNome(String nome) {
+		return getCidades().stream().filter(cidade->cidade.getNome().equals(nome)).findFirst().get();
+	}
+	
+	public Estado recuperarEstadoPorNome(String nome) {
+		return getEstados().stream().filter(estado->estado.getNome().equals(nome)).findFirst().get();
+	}
 	
 	public List<Usuario> getUsuarios() {
 		if (usuarios == null) {
 			usuarios = new ArrayList<Usuario>();
-			
 		}
-		
 		return usuarios;
 	}
 	
@@ -90,7 +95,6 @@ public class BD {
 		if (cidades == null) {
 			cidades = new ArrayList<Cidade>();
 		}
-
 		return cidades;
 	}
 	public void setCidades(List<Cidade> cidades) {

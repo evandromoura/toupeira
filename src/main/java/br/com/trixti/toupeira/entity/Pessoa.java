@@ -1,7 +1,5 @@
 package br.com.trixti.toupeira.entity;
 
-import java.math.BigInteger;
-
 public class Pessoa {
 
 	
@@ -10,7 +8,16 @@ public class Pessoa {
 	private Integer idade;
 	private String endereco;
 	private String telefone;
+	private Cidade cidade;
+	private Estado estado;
 	
+	
+	public Estado getEstado() {
+		return estado;
+	}
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -41,6 +48,12 @@ public class Pessoa {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	public Cidade getCidade() {
+		return cidade;
+	}
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
 	}
 	
 }

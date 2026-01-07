@@ -22,8 +22,11 @@ public class CidadeService {
 	}
 
 	public void excluir(Cidade cidade) {
-
 		cidadeDAO.excluir(cidade);
+	}
+	
+	public Cidade recuperarPorNome(String nome) {
+		return cidadeDAO.recuperarPorNome(nome);
 	}
 
 }

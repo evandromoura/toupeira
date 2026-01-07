@@ -22,4 +22,8 @@ public class EstadoService {
 	public void excluir(Estado estado) {
 		estadoDAO.excluir(estado);
 	}
+
+	public Estado recuperarEstadoPorNome(String nome) {
+		return estadoDAO.recuperarEstadoPorNome(nome);
+	}
 }

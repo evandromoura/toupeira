@@ -17,8 +17,4 @@ public class Cidade {
 		this.uf = uf;
 	}
 	
-	
-	
-	
-	
 }

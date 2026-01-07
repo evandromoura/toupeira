@@ -25,4 +25,8 @@ public class CidadeDAO {
 	public void excluir(Cidade cidade) {
 		bd.excluirCidade(cidade);
 	}
+
+	public Cidade recuperarPorNome(String nome) {
+		return bd.recuperarPorNome(nome);
+	}
 }

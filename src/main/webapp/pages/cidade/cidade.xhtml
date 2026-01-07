@@ -21,7 +21,11 @@
 	    <tou:texto value="#{cidadeController.cidadeTO.cidade.nome}" />
 		<br />
 		<br />
-
+		UF
+		  <h:selectOneMenu value= "#{estadoController.estadoTO.estado.uf}" required= "true" label = "UF">
+	     	<f:selectItem itemLabel = "Escolha"/>
+	     	<f:selectItems value="#{combosBean.estados}" var="estado" itemLabel="#{estado.uf}" itemValue= "#{estado.uf}"/>
+	     </h:selectOneMenu>
 		<br />
 		<h:commandLink action="#{cidadeController.gravar()}" value="GRAVAR" />
 
@@ -37,6 +41,12 @@
 	    			</f:facet>
 	    			#{cidade.nome}
 	    		</h:column>
+				<h:column>
+					<f:facet name="header">
+						UF
+					</f:facet>
+					#{estadoController.estadoTO.estado.uf}
+				</h:column>
 
 				<h:column>
 					<f:facet name="header">

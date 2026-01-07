@@ -23,4 +23,7 @@ public class EstadoDAO {
 	public void excluir(Estado estado) {
 		bd.excluirEstado(estado);
 	}
+	public Estado recuperarEstadoPorNome(String nome) {
+		return bd.recuperarEstadoPorNome(nome);
+	}
 }

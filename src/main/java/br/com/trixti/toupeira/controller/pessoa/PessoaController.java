@@ -7,7 +7,11 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.com.trixti.toupeira.entity.Cidade;
+import br.com.trixti.toupeira.entity.Estado;
 import br.com.trixti.toupeira.entity.Pessoa;
+import br.com.trixti.toupeira.service.cidade.CidadeService;
+import br.com.trixti.toupeira.service.estado.EstadoService;
 import br.com.trixti.toupeira.service.pessoa.PessoaService;
 import br.com.trixti.toupeira.to.PessoaTO;
 
@@ -19,6 +23,8 @@ public class PessoaController implements Serializable {
 
 	private PessoaTO pessoaTO;
 	private @Inject PessoaService pessoaService;
+	private @Inject CidadeService cidadeService;
+	private @Inject EstadoService estadoService;
 
 	@PostConstruct
 	private void init() {
@@ -28,6 +34,8 @@ public class PessoaController implements Serializable {
 
 	private void inicializar() {
 		getPessoaTO().setPessoas(pessoaService.list());
+		getPessoaTO().getPessoa().setCidade(new Cidade());
+		getPessoaTO().getPessoa().setEstado(new Estado());
 	}
 
 	public void gravar() {
@@ -35,9 +43,17 @@ public class PessoaController implements Serializable {
 		System.out.println(getPessoaTO().getPessoa().getEndereco());
 		System.out.println(getPessoaTO().getPessoa().getIdade());
 		System.out.println(getPessoaTO().getPessoa().getTelefone());
-
+		comporPessoa();
 		pessoaService.incluir(getPessoaTO().getPessoa());
 		getPessoaTO().setPessoa(null);
+		inicializar();
+	}
+	
+	public void comporPessoa() {
+		Cidade cidade = cidadeService.recuperarPorNome(getPessoaTO().getPessoa().getCidade().getNome());
+		Estado estado = estadoService.recuperarEstadoPorNome(getPessoaTO().getPessoa().getEstado().getNome());
+		getPessoaTO().getPessoa().setCidade(cidade);
+		getPessoaTO().getPessoa().setEstado(estado);
 	}
 
 	public void excluir(Pessoa pessoa) {
